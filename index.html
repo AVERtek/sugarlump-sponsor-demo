@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>sugarlump-Family-Demo</title>
+
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=0-0000000000"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', '0-0000000000');
+    </script>
+
+    <style>
+.social-icons a {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.1); /* Slightly grows when hovered */
+}
+
+.social-icons img {
+    display: block;
+    /* This ensures they look sharp on high-res screens */
+    image-rendering: -webkit-optimize-contrast; 
+}
+        
+        @font-face {
+            font-family: 'Chalet LondonNineteenEighty Regular';
+            src: url('fonts/Chalet LondonNineteenEighty Regular.otf') format('opentype');
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: Google Sans, Noto, Roboto, Helvetica Neue, sans-serif;
+            color: #244376;
+            background-color: #ffff99;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 15px;
+        }
+
+        .card {
+            background-color: #ffff99;
+            padding: 10px;
+            margin-bottom: 1em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo {
+            width: 350px;
+            max-width: 90%;
+            height: auto;
+            display: block;
+            margin: auto;
+        }
+
+        .viewer-container {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            background: #000;
+            border-radius: 6px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        #myVideo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            z-index: 2;
+        }
+
+        #myModelViewer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        #myModelViewer button[slot="ar-button"] {
+            display: none;
+        }
+
+        .link-list h2 {
+            font-family: 'Chalet LondonNineteenEighty Regular', sans-serif;
+            color: #ff69b4;
+            font-size: 20px;
+            /* ADJUSTED: Reduced vertical margin to bring lines closer */
+            margin: 5px 0;
+        }
+
+        .link-list a, .launch-text {
+            color: #59cbe8;
+            text-decoration: underline !important;
+            text-decoration-color: currentColor !important;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* --- PORTRAIT OPTIMIZED BANNER --- */
+        .banner-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        .banner-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .banner-bg {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; 
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 32px;
+            z-index: 10001;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <img src="images/sugarlump_experience_AR_assets-01.png" alt="Sugarlump Logo" class="logo">
+        </div>
+
+        <div class="card">
+            <div class="viewer-container" id="video-wrapper">
+                <div class="video-overlay" id="overlay-icon">
+                    <img src="images/play_icon.png" style="width:80px;">
+                </div>
+                
+                <video id="myVideo" loop muted playsinline poster="images/Family Demo Poster.png">
+                    <source src="Video/sugarlump_family_video.mp4" type="video/mp4">
+                </video>
+                
+                <model-viewer 
+                    id="myModelViewer" 
+                    src="Models/entire_family_99cm.glb" 
+                    ios-src="Models/GIRL_converted.usdz" 
+                    ar ar-modes="quick-look webxr scene-viewer" 
+                    style="display: none;">
+                </model-viewer>
+            </div>
+
+            <p style="font-family: 'Chalet LondonNineteenEighty Regular'; font-weight: bold; color: #000099; margin-top: 15px;">
+                make sure sound is on!
+            </p>
+
+            <div class="link-list">
+                <img src="images/erin_video_scenes-34.png" style="width: 300px; max-width: 90%; margin-bottom: 10px;">
+                <h2>why: <a href="https://sugarlump.love/" target="_blank">the kindness project</a></h2>
+                <h2>rewards: <a href="https://sugarlump.love/join-the-fun" target="_blank">local elementary schools</a></h2>
+                <h2>faq: <a href="https://sugarlump.love/faq" target="_blank">about sugarlump</a></h2>
+                
+                <p style="margin-top: 5px; font-family: 'Chalet LondonNineteenEighty Regular', sans-serif; font-size: 20px; font-weight: bold;">
+                <span style="color: #ff69b4;">find a sugarlump sticker:</span> 
+                <span class="launch-text" onclick="launchFullscreenBanner()">here's what to do!</span>
+            </p>
+            </div>
+
+            <div class="social-icons" style="margin-top: 20px; display: flex; justify-content: center; gap: 20px;">
+    <a href="https://www.facebook.com/sugarlumploves" target="_blank">
+        <img src="images/facebook_icon.png" alt="Facebook" style="width: 30px; height: auto;">
+    </a>
+    <a href="https://www.instagram.com/sugarlumplove" target="_blank">
+        <img src="images/instagram_icon.png" alt="Instagram" style="width: 30px; height: auto;">
+    </a>
+    <a href="https://www.tiktok.com/@sugarlump_love" target="_blank">
+        <img src="images/tiktok_icon.png" alt="TikTok" style="width: 30px; height: auto;">
+    </a>
+</div>
+           <div class="footer-link" style="font-family: 'Chalet LondonNineteenEighty Regular'; color: #59cbe8; font-size: 14px; margin-top: 20px;">
+                <a href="https://avertek.net/" target="_blank">contact AVERtek to learn more about XR marketing.</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup-banner" class="banner-container">
+        <div class="banner-content">
+            <img src="images/Pop-Up Banner4.png" alt="Banner" class="banner-bg">
+            <button class="close-btn" onclick="exitFullscreenBanner()">×</button>
+        </div>
+    </div>
+
+    <script>
+        const video = document.getElementById('myVideo');
+        const wrapper = document.getElementById('video-wrapper');
+        const overlay = document.getElementById('overlay-icon');
+        const bannerContainer = document.getElementById('popup-banner');
+        const arSound = new Audio('Sound/sweet_neighbor_of_mine3.mp3');
+        arSound.loop = true;
+        let isPlaying = false;
+
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+        // --- BANNER LOGIC (PORTRAIT) ---
+        async function launchFullscreenBanner() {
+            bannerContainer.style.display = 'flex';
+            try {
+                if (bannerContainer.requestFullscreen) {
+                    await bannerContainer.requestFullscreen();
+                } else if (bannerContainer.webkitRequestFullscreen) {
+                    await bannerContainer.webkitRequestFullscreen();
+                }
+
+                if (screen.orientation && screen.orientation.lock) {
+                    await screen.orientation.lock('portrait').catch(() => {});
+                }
+            } catch (err) {}
+        }
+
+        function exitFullscreenBanner() {
+            if (document.exitFullscreen) document.exitFullscreen();
+            else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+            bannerContainer.style.display = 'none';
+        }
+
+        // --- VIDEO LOGIC ---
+        wrapper.addEventListener('click', async () => {
+            video.muted = false;
+            if (isPlaying) {
+                video.pause();
+                arSound.pause();
+                overlay.style.opacity = '1';
+                isPlaying = false;
+            } else {
+                try {
+                    const playPromise = video.play();
+                    arSound.play();
+
+                    if (playPromise !== undefined) {
+                        playPromise.then(async () => {
+                            overlay.style.opacity = '0';
+                            isPlaying = true;
+
+                            if (isIOS) {
+                                if (video.webkitEnterFullscreen) video.webkitEnterFullscreen();
+                            } else {
+                                if (wrapper.requestFullscreen) await wrapper.requestFullscreen();
+                                if (screen.orientation && screen.orientation.lock) {
+                                    await screen.orientation.lock('landscape').catch(() => {});
+                                }
+                            }
+                        });
+                    }
+                } catch (e) {}
+            }
+        });
+
+        const cleanup = () => {
+            if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+                bannerContainer.style.display = 'none';
+            }
+        };
+        document.addEventListener('fullscreenchange', cleanup);
+        document.addEventListener('webkitfullscreenchange', cleanup);
+    </script>
+</body>
+</html>
